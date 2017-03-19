@@ -1,0 +1,21 @@
+{
+  "name": "ganlvtech/php-xjtu-user-info",
+  "description": "A simple class used to get user info from xjtu user center",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ganlvtech",
+      "email": "ganlvtech@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "ext-soap": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpXjtuUserInfo\\": "src"
+    }
+  }
+}
