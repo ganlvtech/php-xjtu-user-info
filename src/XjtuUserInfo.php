@@ -27,9 +27,24 @@ class XjtuUserInfo
      */
     public function getInfoByNetId($net_id)
     {
-        return $this->soapCall('getInfoById', array(
+        return self::toArray($this->soapCall('getInfoById', array(
             'uid' => $net_id,
-        ));
+        )));
+    }
+
+    /**
+     * @param mixed $arr
+     *
+     * @return array
+     */
+    public static function toArray($arr)
+    {
+        if (is_null($arr)) {
+            return null;
+        } elseif (is_object($arr)) {
+            return get_object_vars($arr);
+        }
+        return $arr;
     }
 
     /**
@@ -56,9 +71,9 @@ class XjtuUserInfo
      */
     public function getInfoByStuId($stu_id)
     {
-        return $this->soapCall('getInfoByNo', array(
+        return self::toArray($this->soapCall('getInfoByNo', array(
             'sno' => $stu_id,
-        ));
+        )));
     }
 
     /**
@@ -68,7 +83,7 @@ class XjtuUserInfo
      */
     public function getInfoByName($name)
     {
-        return self::toArray($this->soapCall('getInfoByName', array(
+        return self::toNumericArray($this->soapCall('getInfoByName', array(
             'sname' => $name,
         )));
     }
@@ -78,7 +93,7 @@ class XjtuUserInfo
      *
      * @return array
      */
-    public static function toArray($arr)
+    public static function toNumericArray($arr)
     {
         if (is_null($arr)) {
             return array();
@@ -110,8 +125,8 @@ class XjtuUserInfo
      */
     public function getInfoByMobile($mobile)
     {
-        return $this->soapCall('getInfoByMobile', array(
+        return self::toArray($this->soapCall('getInfoByMobile', array(
             'mobile' => $mobile,
-        ));
+        )));
     }
 }
